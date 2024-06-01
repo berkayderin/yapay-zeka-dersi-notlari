@@ -1,0 +1,24 @@
+OPEN -> // fCost'a göre sıralı dizi
+
+OPEN.ekle(başlangıç_düğümü)
+
+
+DÖNGÜ - OPEN dizi boyutu 0 olmadığı müddetçe
+    şuanki_düğüm <- OPEN.ilk elemanı
+    OPEN.sil(şuanki düğüm)
+    EĞER şuanki_düğüm, hedef düğüm ise
+        DÖNGÜden çık // HEDEFE ULAŞTI
+    şuanki_düğüm.closed=true
+    şuanki_düğüm.gCostHesapla()
+    komşular = şuanki_düğüm.komşular
+    DÖNGÜ komşu <- komşular
+        EĞER komşu.closed ise SONRAKİ_KOMŞUYA_GEÇ
+        maliyet = şuanki_düğüm.gCost + komşuya_uzaklık
+        komşu.gCostHesapla()
+        EĞER komşu.OPENdaDeğilse veya maliyet<komşu.gCost ise
+            komşu.gCost = maliyet
+            komşu.hCostHesapla()
+            komşu.ebeveyn = şuanki_düğüm
+            EĞER komşu.OPENdaDeğilse
+                OPEN.ekle(komşu)
+OPEN dizi boyutu 0 olduğu için DÖNGÜden çıkıldıysa // HEDEFE ULAŞAMADI
